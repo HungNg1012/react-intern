@@ -1,55 +1,131 @@
-import './App.css';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import "./App.css";
+import React, { useState } from "react";
+import {
+  AppstoreOutlined,
+  ContainerOutlined,
+  MenuFoldOutlined,
+  PieChartOutlined,
+  DesktopOutlined,
+  MailOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
+import { Button, Menu, Row, Col, Card, List } from "antd";
+
+function getItem(label, key, icon, children, type) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  };
+}
+const items = [
+  getItem("Trang chủ", "1", <PieChartOutlined />),
+  getItem("Shorts", "2", <DesktopOutlined />),
+  getItem("Kênh đăng ký", "3", <ContainerOutlined />),
+  getItem("Thư viện", "4", <MailOutlined />),
+  getItem("Video đã xem", "5", <MailOutlined />),
+  getItem("Video của bạn", "6", <MailOutlined />),
+  getItem("Xem sau", "7", <MailOutlined />),
+  getItem("Video đã thích", "8", <MailOutlined />),
+  getItem("Thư viện", "9", <MailOutlined />),
+  getItem("Kênh đăng ký", "sub1", <AppstoreOutlined />, [
+    getItem("Kênh 1", "10"),
+    getItem("Kênh 2", "11"),
+    getItem("Kênh 3", "12"),
+    getItem("Kênh 4", "13"),
+  ]),
+];
+
+const videos = [
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+  {
+    title: "Video title",
+  },
+];
 
 function App() {
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-
-  const deadline = "December, 31, 2023";
-
-  const getTime = () => {
-    const time = Date.parse(deadline) - Date.now();
-    //console.log(time)
-    setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-    //console.log(days)
-    setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
-    setMinutes(Math.floor((time / 1000 / 60) % 60));
-    setSeconds(Math.floor((time / 1000) % 60));
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => getTime(deadline), 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+  const [collapsed, setCollapsed] = useState(false);
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
   return (
-    <div className="App">
-      <div className="timer">
-        <p className="timer-header">TIMER</p>
-        <div className="timer-content">
-          <div className="cell">
-            <p>{days}</p>
-            <span className="text">days</span>
-          </div>
-          <div className="cell">
-            <p>{hours}</p>
-            <span className="text">hours</span>
-          </div>
-          <div className="cell">
-            <p>{minutes}</p>
-            <span className="text">minutes</span>
-          </div>
-          <div className="cell">
-            <p>{seconds}</p>
-            <span className="text">seconds</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <Row style={{ display: "flex", alignItems: "center", color: "#fff" }}>
+        <Button
+          onClick={toggleCollapsed}
+          style={{
+            margin: 14,
+            backgroundColor: "inherit",
+            color: "#fff",
+          }}
+        >
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </Button>
+        <h1>Metube</h1>
+      </Row>
+      <Row>
+        <Col flex="278px">
+          <Menu
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="dark"
+            inlineCollapsed={collapsed}
+            items={items}
+            style={{
+              height: "91vh",
+              fontSize: 20,
+              position: "sticky",
+            }}
+          />
+        </Col>
+        <Col flex="auto">
+          <List
+            grid={{
+              gutter: 16,
+              xs: 1,
+              sm: 2,
+              md: 4,
+              lg: 4,
+              xl: 6,
+              xxl: 3,
+            }}
+            dataSource={videos}
+            renderItem={(item) => (
+              <List.Item style={{margin:"20px"}}>
+                <Card title={item.title}>Card content</Card>
+              </List.Item>
+            )}
+          />
+          ,
+        </Col>
+      </Row>
+    </>
   );
 }
 

@@ -1,35 +1,25 @@
-.App {
-  background-color: #27374D;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ant-menu-item {
+    height: 60px !important;
 }
-.timer-header {
-  font-size: 42px;
-  text-align: center;
-  color: #DDE6ED;
-  margin-bottom: 20px;
+.ant-devider {
+    background:"rgba(255,255,255,.05)"
 }
-.timer-content {
-  width: 600px;
-  height: 150px;
-  background-color: #526D82;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cell {
-  margin-inline: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #DDE6ED;
-}
-.cell p {
-  font-size: 32px;
-  margin: 0;
-}
-.text {
-  font-size: 24px;
-}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
