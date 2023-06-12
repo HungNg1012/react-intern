@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-const apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+const apiUrl = "https://jsonplaceholder.typicode.com/user0";
+
 async function getApiData() {
   return fetch(apiUrl).then((response) =>
     response.json().catch((error) => error)

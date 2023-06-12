@@ -22,7 +22,7 @@ function App() {
             users.map((user) => <p key={user.id}>{user.name}</p>)}
           {users.length === 0 ? <p>No users</p> : null}
           {users.length === 0 && loading === true ? <p>Loading...</p> : null}
-          {error === 0 && !loading === true ? <p>{error.message}</p> : null}
+          {error ? <p>{error}</p> : null}
         </div>
       </div>
     </div>
