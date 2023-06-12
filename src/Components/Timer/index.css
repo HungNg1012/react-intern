@@ -1,0 +1,28 @@
+.timer-header {
+    font-size: 42px;
+    text-align: center;
+    color: #DDE6ED;
+    margin-bottom: 20px;
+}
+.timer-content {
+    width: 600px;
+    height: 150px;
+    background-color: #526D82;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cell {
+    margin-inline: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #DDE6ED;
+}
+.cell p {
+    font-size: 32px;
+    margin: 0;
+}
+.text {
+    font-size: 24px;
+}
